@@ -1,3 +1,5 @@
+using AutoMapper;
+using CarsApplication.Mappings;
 using CarsApplication.Persistence;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -22,6 +24,8 @@ namespace CarsApplication
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            //initialize autommapers
+            services.AddAutoMapper(typeof(MappingProfile));
             //service database connection
             services.AddDbContext<AppDbContext>(options => options.UseSqlServer(Configuration["ConnectionStrings:Default"]));
 
