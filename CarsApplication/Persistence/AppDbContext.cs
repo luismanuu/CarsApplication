@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using CarsApplication.Models;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,5 +14,7 @@ namespace CarsApplication.Persistence
         {
 
         }
+
+        public DbSet<Make> Makes { get; set; }
     }
 }
