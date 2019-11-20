@@ -1,11 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
 namespace CarsApplication.Models
 {
+    [Table("Vehicles")]
     public class Vehicle
     {
         public int Id { get; set; }
@@ -20,6 +23,12 @@ namespace CarsApplication.Models
         [StringLength(255)]
         public string ContactPhone { get; set; }
         public DateTime LastUpdate {get; set;}
+        //relacion n a n
+        public ICollection<VehicleFeature> Features { get; set; }
 
+        public Vehicle()
+        {
+            Features = new Collection<VehicleFeature>();
+        }
     }
 }
